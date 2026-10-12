@@ -683,9 +683,9 @@ Proyek ini telah berhasil menyelesaikan seluruh kriteria penilaian Dicoding seca
 | 1 | **Data Scraping Mandiri** | Minimal 3.000 sampel | 11.266 data ulasan unik diambil dari Google Play Store Tokopedia | **TERPENUHI** |
 | 2 | **Ekstraksi Fitur & Pelabelan Data** | Preprocessing & pelabelan | Text cleaning, slang normalization, stopword filtering, dan pelabelan 3 kelas | **TERPENUHI** |
 | 3 | **Algoritma Machine / Deep Learning** | ML / Deep Learning | Bidirectional LSTM, 1D CNN, dan LinearSVC | **TERPENUHI** |
-| 4 | **Akurasi Testing Set Minimal 85%** | $\ge 85\%$ | Seluruh 3 model mencapai akurasi testing $\ge 90\%$ (BiLSTM: 95.03%) | **TERPENUHI** |
+| 4 | **Akurasi Testing Set Minimal 85%** | $\ge 85\%$ | Seluruh 3 model mencapai akurasi testing $\ge 89\%$ (BiLSTM: 95.08%, Conv1D: 95.80%, LinearSVC: 89.26%) | **TERPENUHI** |
 | 5 | **Saran 1: Algoritma Deep Learning** | Arsitektur DL | Menggunakan arsitektur Bidirectional LSTM & Conv1D | **TERPENUHI** |
-| 6 | **Saran 2: Akurasi Train & Test > 92%** | $> 92\%$ Train & Test | Skema 1 (BiLSTM): Train = 99.05%, Test = 95.03% | **TERPENUHI** |
+| 6 | **Saran 2: Akurasi Train & Test > 92%** | $> 92\%$ Train & Test | Skema 1 (BiLSTM): Train = 98.08%, Test = 95.08% (Keduanya > 92%) | **TERPENUHI** |
 | 7 | **Saran 3: Minimal 3 Kelas Sentimen** | 3 Kelas | Kelas: *Negatif*, *Netral*, dan *Positif* | **TERPENUHI** |
 | 8 | **Saran 4: Dataset Minimal 10.000 Sampel** | $\ge 10.000$ baris | 11.266 baris data ulasan valid | **TERPENUHI** |
 | 9 | **Saran 5: 3 Skema Pelatihan Berbeda** | Variasi minimal 2 kombinasi | Skema 1 (BiLSTM 80:20), Skema 2 (LinearSVC 80:20), Skema 3 (Conv1D 70:30) | **TERPENUHI** |

@@ -12,9 +12,9 @@ Proyek submission analisis sentimen teks ulasan multi-kelas (Negatif, Netral, Po
 | 1 | **Data Scraping Mandiri** | Minimal 3.000 sampel | **11.266 baris ulasan** diambil via `scraper.py` dari Play Store Tokopedia | **TERPENUHI** |
 | 2 | **Ekstraksi Fitur & Pelabelan** | Preprocessing & pelabelan | Text cleaning, slang normalization, stopword filtering, pelabelan 3 kelas | **TERPENUHI** |
 | 3 | **Algoritma Machine / Deep Learning** | ML / Deep Learning | Bidirectional LSTM (Deep Learning), Conv1D, dan LinearSVC | **TERPENUHI** |
-| 4 | **Akurasi Testing Minimal 85%** | $\ge 85\%$ | BiLSTM: **95.03%**, Conv1D: **95.92%**, LinearSVC: **90.06%** | **TERPENUHI** |
+| 4 | **Akurasi Testing Minimal 85%** | $\ge 85\%$ | BiLSTM: **95.08%**, Conv1D: **95.80%**, LinearSVC: **89.26%** | **TERPENUHI** |
 | 5 | **Saran 1: Algoritma Deep Learning** | Deep Learning | Menggunakan arsitektur Bidirectional LSTM & 1D CNN | **TERPENUHI** |
-| 6 | **Saran 2: Akurasi Train & Test > 92%** | $> 92\%$ Train & Test | Skema 1 (BiLSTM): **Train 99.05%**, **Test 95.03%** | **TERPENUHI** |
+| 6 | **Saran 2: Akurasi Train & Test > 92%** | $> 92\%$ Train & Test | Skema 1 (BiLSTM): **Train 98.08%**, **Test 95.08%** | **TERPENUHI** |
 | 7 | **Saran 3: Minimal 3 Kelas Sentimen** | 3 Kelas | *Negatif* (0), *Netral* (1), *Positif* (2) | **TERPENUHI** |
 | 8 | **Saran 4: Dataset Minimal 10.000 Data** | $\ge 10.000$ sampel | **11.266 ulasan unik** valid | **TERPENUHI** |
 | 9 | **Saran 5: 3 Skema Pelatihan Berbeda** | Minimal 2 kombinasi berbeda | 3 Skema (variasi algoritma, ekstraksi fitur, dan rasio split) | **TERPENUHI** |
@@ -51,8 +51,8 @@ Proyek submission analisis sentimen teks ulasan multi-kelas (Negatif, Netral, Po
 | **Kategori Algoritma** | Deep Learning | Classical ML | Deep Learning |
 | **Ekstraksi Fitur** | Keras Tokenizer + Embedding (128) | TF-IDF (N-gram 1-2, 10.000) | Tokenizer + Embedding (128) |
 | **Rasio Split (Train:Test)** | **80 : 20** | **80 : 20** | **70 : 30** |
-| **Training Accuracy** | **99.05%** | **99.48%** | **99.71%** |
-| **Testing Accuracy** | **95.03%** | **90.06%** | **95.92%** |
+| **Training Accuracy** | **98.08%** | **99.49%** | **99.95%** |
+| **Testing Accuracy** | **95.08%** | **89.26%** | **95.80%** |
 | **Target Capaian** | **> 92% (Saran 2 Dicoding)** | **$\ge$ 85% (Kriteria 4)** | **$\ge$ 85% (Kriteria 4)** |
 
 ---
