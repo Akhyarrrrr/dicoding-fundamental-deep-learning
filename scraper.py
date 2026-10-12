@@ -78,7 +78,7 @@ def scrape_reviews():
                         })
                         collected_for_score += 1
 
-                print(f"    Progres Rating {score}★: {collected_for_score}/{target_count} ulasan terkumpul.")
+                print(f"    Progres Rating {score}: {collected_for_score}/{target_count} ulasan terkumpul.")
 
                 if not continuation_token:
                     print(f"    Token paginasi selesai untuk rating {score}.")
@@ -106,8 +106,8 @@ def scrape_reviews():
 
     # Simpan ke CSV
     df.to_csv(OUTPUT_FILE, index=False, encoding="utf-8")
-    print(f"\n[✓] Berhasil menyimpan dataset ke file: {os.path.abspath(OUTPUT_FILE)}")
-    print(f"[✓] Jumlah baris data: {len(df)} (Memenuhi kriteria minimal 10.000 sampel!)")
+    print(f"\n[OK] Berhasil menyimpan dataset ke file: {os.path.abspath(OUTPUT_FILE)}")
+    print(f"[OK] Jumlah baris data: {len(df)} (Memenuhi kriteria minimal 10.000 sampel!)")
 
     return df
 

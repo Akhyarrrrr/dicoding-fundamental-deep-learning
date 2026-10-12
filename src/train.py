@@ -14,11 +14,6 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-if sys.platform == "win32":
-    import io
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
-
 import pickle
 import numpy as np
 import pandas as pd
@@ -284,6 +279,11 @@ def run_scheme_1_bilstm(X_train_text, X_test_text, y_train, y_test):
     }
 
 def main():
+    if sys.platform == "win32":
+        import io
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
     os.makedirs(MODEL_DIR, exist_ok=True)
     df = prepare_data()
     
@@ -312,8 +312,8 @@ def main():
     with open(os.path.join(MODEL_DIR, "tokenizer.pickle"), "wb") as f:
         pickle.dump(res_bilstm["tokenizer"], f)
         
-    print(f"[✓] Model berhasil disimpan ke {MODEL_DIR}/bilstm_model.keras")
-    print(f"[✓] Tokenizer berhasil disimpan ke {MODEL_DIR}/tokenizer.pickle")
+    print(f"[OK] Model berhasil disimpan ke {MODEL_DIR}/bilstm_model.keras")
+    print(f"[OK] Tokenizer berhasil disimpan ke {MODEL_DIR}/tokenizer.pickle")
     
     # Ringkasan perbandingan ketiga skema
     print("\n" + "="*60)
