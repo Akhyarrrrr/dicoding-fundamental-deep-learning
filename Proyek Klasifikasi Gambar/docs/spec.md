@@ -128,6 +128,8 @@ Proyek Klasifikasi Gambar/
 │   ├── lainnya.md
 │   ├── pengantar.md
 │   ├── penilaian.md
+│   ├── plan.md
+│   ├── spec.md
 │   └── review_terakhir_sebelum_kumpul.md
 ├── saved_model/
 │   ├── saved_model.pb
