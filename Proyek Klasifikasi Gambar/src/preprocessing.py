@@ -10,8 +10,8 @@ import random
 from typing import Tuple, List
 import tensorflow as tf
 
-IMAGE_SIZE = (150, 150)
-BATCH_SIZE = 32
+IMAGE_SIZE = (120, 120)
+BATCH_SIZE = 64
 CLASSES = ["buildings", "forest", "glacier", "mountain", "sea", "street"]
 
 def split_raw_data_3way(raw_dir: str, target_dir: str,
@@ -71,9 +71,6 @@ def get_augmentation_layer():
     """
     return tf.keras.Sequential([
         tf.keras.layers.RandomFlip("horizontal"),
-        tf.keras.layers.RandomRotation(0.15),
-        tf.keras.layers.RandomZoom(0.1),
-        tf.keras.layers.RandomBrightness(0.1),
     ], name="data_augmentation")
 
 def create_datasets(train_dir: str, val_dir: str, test_dir: str,
@@ -116,8 +113,8 @@ def create_datasets(train_dir: str, val_dir: str, test_dir: str,
                             num_parallel_calls=tf.data.AUTOTUNE)
 
     # Performance optimizations
-    train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=tf.data.AUTOTUNE)
-    val_ds = val_ds.cache().prefetch(buffer_size=tf.data.AUTOTUNE)
-    test_ds = test_ds.cache().prefetch(buffer_size=tf.data.AUTOTUNE)
+    train_ds = train_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+    val_ds = val_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+    test_ds = test_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
 
     return train_ds, val_ds, test_ds, class_names

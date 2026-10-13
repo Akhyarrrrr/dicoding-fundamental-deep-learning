@@ -27,7 +27,7 @@ class TargetAccuracyCallback(tf.keras.callbacks.Callback):
             print("Target 5-star accuracy achieved! Stopping training early.")
             self.model.stop_training = True
 
-def build_sequential_cnn(input_shape: Tuple[int, int, int] = (150, 150, 3),
+def build_sequential_cnn(input_shape: Tuple[int, int, int] = (120, 120, 3),
                          num_classes: int = 6) -> tf.keras.Sequential:
     """
     Build high-capacity deep Sequential CNN model strictly compliant with Dicoding Criteria 4.
@@ -38,42 +38,32 @@ def build_sequential_cnn(input_shape: Tuple[int, int, int] = (150, 150, 3),
 
         # Conv Block 1
         tf.keras.layers.Conv2D(32, (3, 3), padding="same", activation="relu", name="conv1_1"),
-        tf.keras.layers.BatchNormalization(name="bn1_1"),
         tf.keras.layers.Conv2D(32, (3, 3), activation="relu", name="conv1_2"),
-        tf.keras.layers.BatchNormalization(name="bn1_2"),
         tf.keras.layers.MaxPooling2D(pool_size=(2, 2), name="pool1"),
-        tf.keras.layers.Dropout(0.2, name="drop1"),
+        tf.keras.layers.BatchNormalization(name="bn1"),
 
         # Conv Block 2
         tf.keras.layers.Conv2D(64, (3, 3), padding="same", activation="relu", name="conv2_1"),
-        tf.keras.layers.BatchNormalization(name="bn2_1"),
         tf.keras.layers.Conv2D(64, (3, 3), activation="relu", name="conv2_2"),
-        tf.keras.layers.BatchNormalization(name="bn2_2"),
         tf.keras.layers.MaxPooling2D(pool_size=(2, 2), name="pool2"),
-        tf.keras.layers.Dropout(0.25, name="drop2"),
+        tf.keras.layers.BatchNormalization(name="bn2"),
 
         # Conv Block 3
         tf.keras.layers.Conv2D(128, (3, 3), padding="same", activation="relu", name="conv3_1"),
-        tf.keras.layers.BatchNormalization(name="bn3_1"),
         tf.keras.layers.Conv2D(128, (3, 3), activation="relu", name="conv3_2"),
-        tf.keras.layers.BatchNormalization(name="bn3_2"),
         tf.keras.layers.MaxPooling2D(pool_size=(2, 2), name="pool3"),
-        tf.keras.layers.Dropout(0.3, name="drop3"),
+        tf.keras.layers.BatchNormalization(name="bn3"),
 
         # Conv Block 4
-        tf.keras.layers.Conv2D(256, (3, 3), padding="same", activation="relu", name="conv4_1"),
-        tf.keras.layers.BatchNormalization(name="bn4_1"),
+        tf.keras.layers.Conv2D(64, (3, 3), activation="relu", name="conv4_1"),
         tf.keras.layers.MaxPooling2D(pool_size=(2, 2), name="pool4"),
-        tf.keras.layers.Dropout(0.35, name="drop4"),
+        tf.keras.layers.BatchNormalization(name="bn4"),
 
         # Dense Classifier Head
         tf.keras.layers.Flatten(name="flatten"),
-        tf.keras.layers.Dense(512, activation="relu", name="dense1"),
+        tf.keras.layers.Dense(256, activation="relu", name="dense1"),
         tf.keras.layers.BatchNormalization(name="bn_dense1"),
-        tf.keras.layers.Dropout(0.5, name="drop_dense1"),
-        tf.keras.layers.Dense(256, activation="relu", name="dense2"),
-        tf.keras.layers.BatchNormalization(name="bn_dense2"),
-        tf.keras.layers.Dropout(0.4, name="drop_dense2"),
+        tf.keras.layers.Dropout(0.3, name="drop_dense1"),
         tf.keras.layers.Dense(num_classes, activation="softmax", name="output")
     ], name="intel_scene_sequential_cnn")
 

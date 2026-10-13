@@ -22,18 +22,12 @@ def evaluate_model(model, test_ds, class_names, save_dir="dataset"):
 
     # Collect predictions and true labels
     y_true = []
-    y_pred = []
-    y_scores = []
-
     for images, labels in test_ds:
-        preds = model.predict(images, verbose=0)
         y_true.extend(np.argmax(labels.numpy(), axis=1))
-        y_pred.extend(np.argmax(preds, axis=1))
-        y_scores.extend(preds)
 
     y_true = np.array(y_true)
-    y_pred = np.array(y_pred)
-    y_scores = np.array(y_scores)
+    y_scores = model.predict(test_ds, verbose=1)
+    y_pred = np.argmax(y_scores, axis=1)
 
     # Classification report
     print("\nCLASSIFICATION REPORT:")
