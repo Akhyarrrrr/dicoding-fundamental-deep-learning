@@ -71,6 +71,8 @@ def get_augmentation_layer():
     """
     return tf.keras.Sequential([
         tf.keras.layers.RandomFlip("horizontal"),
+        tf.keras.layers.RandomRotation(0.08),
+        tf.keras.layers.RandomZoom(0.08),
     ], name="data_augmentation")
 
 def create_datasets(train_dir: str, val_dir: str, test_dir: str,
@@ -107,14 +109,15 @@ def create_datasets(train_dir: str, val_dir: str, test_dir: str,
 
     class_names = train_ds.class_names
 
-    # Apply data augmentation ONLY to train_ds
+    # Performance optimizations: caching before augmentation prevents repeated disk reads
+    train_ds = train_ds.cache()
     augmentation = get_augmentation_layer()
     train_ds = train_ds.map(lambda x, y: (augmentation(x, training=True), y),
                             num_parallel_calls=tf.data.AUTOTUNE)
-
-    # Performance optimizations
     train_ds = train_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
-    val_ds = val_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
-    test_ds = test_ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+
+    val_ds = val_ds.cache().prefetch(buffer_size=tf.data.AUTOTUNE)
+    test_ds = test_ds.cache().prefetch(buffer_size=tf.data.AUTOTUNE)
 
     return train_ds, val_ds, test_ds, class_names
+

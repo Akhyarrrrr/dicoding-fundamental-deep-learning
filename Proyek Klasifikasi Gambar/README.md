@@ -21,9 +21,9 @@ Proyek ini dirancang secara komprehensif untuk memenuhi seluruh **7 Kriteria Uta
 |---|---|---|---|
 | 1 | Bebas Memilih Dataset ($\ge 1.000$ gambar) | Menggunakan dataset Intel Image Classification sebanyak **17.034 citra**. | **TERPENUHI** |
 | 2 | Tidak Menggunakan Dataset Terlarang | Dataset pemandangan alam orisinil (bukan RPS, bukan X-Ray). | **TERPENUHI** |
-| 3 | Pembagian Dataset 3-Way (Train, Val, Test) | Dataset dibagi secara ketat menjadi **70% Train, 15% Val, 15% Test**. | **TERPENUHI** |
+| 3 | Pembagian Dataset 3-Way (Train, Val, Test) | Pembagian manual mandiri: **70% Train (11.920 citra), 15% Val (2.552 citra), 15% Test (2.562 citra)** dari direktori gabungan `dataset/raw/`. | **TERPENUHI** |
 | 4 | Model Sequential, Conv2D, Pooling Layer | Arsitektur `tf.keras.Sequential` dengan 4 blok `Conv2D` dan `MaxPooling2D`. | **TERPENUHI** |
-| 5 | Akurasi Train & Test Minimal 85% | Akurasi training dan testing mencapai **$\ge 95\%$**. | **TERPENUHI** |
+| 5 | Akurasi Train & Test Minimal 85% | Evaluasi independen: **Training Acc: 86.80%**, **Testing Acc: 85.68%** (keduanya $\ge 85\%$). | **TERPENUHI** |
 | 6 | Plot Akurasi dan Loss Model | Visualisasi grafik komparasi akurasi dan loss (train vs validation). | **TERPENUHI** |
 | 7 | Menyimpan Model ke SavedModel, TFLite, TFJS | Seluruh format diekspor ke direktori `saved_model/`, `tflite/`, `tfjs_model/`. | **TERPENUHI** |
 

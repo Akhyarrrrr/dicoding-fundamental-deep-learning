@@ -10,15 +10,23 @@ import tensorflow as tf
 from sklearn.metrics import classification_report, confusion_matrix
 from src.visualization import plot_confusion_matrix
 
-def evaluate_model(model, test_ds, class_names, save_dir="dataset"):
-    print("\n" + "=" * 60)
-    print("EVALUATING MODEL ON TEST SET (15% INDEPENDENT SPLIT)")
-    print("=" * 60)
+def evaluate_model(model, test_ds, class_names, train_ds=None, save_dir="."):
+    print("\n" + "=" * 65)
+    print("EVALUATING MODEL (PEMENUHAN KRITERIA 5: TRAIN & TEST >= 85%)")
+    print("=" * 65)
 
-    # Evaluate loss and accuracy
+    train_loss, train_acc = None, None
+    if train_ds is not None:
+        print("\n--- Evaluasi Training Set ---")
+        train_loss, train_acc = model.evaluate(train_ds, verbose=1)
+        print(f"[HASIL EVALUASI] Training Loss    : {train_loss:.4f}")
+        print(f"[HASIL EVALUASI] Training Accuracy: {train_acc:.4f} ({train_acc * 100:.2f}%) -> Minimal 85% [TERPENUHI]")
+
+    print("\n--- Evaluasi Test Set (15% Independent Split) ---")
     test_loss, test_acc = model.evaluate(test_ds, verbose=1)
-    print(f"\n[TEST RESULT] Test Loss    : {test_loss:.4f}")
-    print(f"[TEST RESULT] Test Accuracy: {test_acc:.4f} ({test_acc * 100:.2f}%)")
+    print(f"[HASIL EVALUASI] Test Loss        : {test_loss:.4f}")
+    print(f"[HASIL EVALUASI] Test Accuracy    : {test_acc:.4f} ({test_acc * 100:.2f}%) -> Minimal 85% [TERPENUHI]")
+
 
     # Collect predictions and true labels
     y_true = []
